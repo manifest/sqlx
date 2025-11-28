@@ -95,6 +95,7 @@ where
         ),
         not(feature = "_tls-rustls-ring-webpki"),
         not(feature = "_tls-rustls-ring-platform-verifier"),
+        not(feature = "_tls-rustls-no-provider-platform-verifier"),
     ))]
     let provider = Arc::new(rustls::crypto::aws_lc_rs::default_provider());
     #[cfg(any(
@@ -102,6 +103,18 @@ where
         feature = "_tls-rustls-ring-platform-verifier"
     ))]
     let provider = Arc::new(rustls::crypto::ring::default_provider());
+
+    #[cfg(all(
+        feature = "_tls-rustls-no-provider-platform-verifier",
+        not(feature = "_tls-rustls-aws-lc-rs"),
+        not(feature = "_tls-rustls-aws-lc-rs-platform-verifier"),
+        not(feature = "_tls-rustls-ring-webpki"),
+        not(feature = "_tls-rustls-ring-platform-verifier"),
+    ))]
+    let provider = CryptoProvider::get_default()
+        .ok_or_else(|| Error::Configuration(
+            "no process-level CryptoProvider available -- call CryptoProvider::install_default() before this point".into()
+        ))?.clone();
 
     // Unwrapping is safe here because we use a default provider.
     let config = ClientConfig::builder_with_provider(provider.clone())

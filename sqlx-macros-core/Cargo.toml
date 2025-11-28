@@ -22,6 +22,7 @@ _tls-rustls-aws-lc-rs = ["sqlx-core/_tls-rustls-aws-lc-rs"]
 _tls-rustls-aws-lc-rs-platform-verifier = ["sqlx-core/_tls-rustls-aws-lc-rs-platform-verifier"]
 _tls-rustls-ring-webpki = ["sqlx-core/_tls-rustls-ring-webpki"]
 _tls-rustls-ring-platform-verifier = ["sqlx-core/_tls-rustls-aws-lc-rs-platform-verifier"]
+_tls-rustls-no-provider-platform-verifier = ["sqlx-core/_tls-rustls-no-provider-platform-verifier"]
 
 _sqlite = []
 
