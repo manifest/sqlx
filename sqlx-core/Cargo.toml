@@ -32,6 +32,7 @@ _tls-rustls-aws-lc-rs = ["_tls-rustls", "rustls/aws-lc-rs", "webpki-roots"]
 _tls-rustls-aws-lc-rs-platform-verifier = ["_tls-rustls", "rustls/aws-lc-rs", "rustls-platform-verifier"]
 _tls-rustls-ring-webpki = ["_tls-rustls", "rustls/ring", "webpki-roots"]
 _tls-rustls-ring-platform-verifier = ["_tls-rustls", "rustls/ring", "rustls-platform-verifier"]
+_tls-rustls-no-provider-platform-verifier = ["_tls-rustls", "rustls-platform-verifier"]
 _tls-rustls = ["rustls"]
 _tls-none = []
 
